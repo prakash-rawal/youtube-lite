@@ -21,7 +21,7 @@ const SearchResult = () => {
   useEffect(()=>{
     document.getElementById("root").classList.remove("custom-h")
     fetchSearchResult();
-  },[searchQuery])
+  },[searchQuery, fetchSearchResult])
 
   const fetchSearchResult =()=>{
     setLoading(true)
