@@ -18,19 +18,21 @@ const SearchResult = () => {
     return `${item?.video?.videoId}-${index}`;
 };
 
+const fetchSearchResult =()=>{
+  setLoading(true)
+  fetchDataFromApi(`search/?q=${searchQuery}`).then((res)=>{
+    console.log(res);
+    setResult(res?.contents)
+    setLoading(false)
+  })
+}
+
   useEffect(()=>{
     document.getElementById("root").classList.remove("custom-h")
     fetchSearchResult();
   },[searchQuery, fetchSearchResult])
 
-  const fetchSearchResult =()=>{
-    setLoading(true)
-    fetchDataFromApi(`search/?q=${searchQuery}`).then((res)=>{
-      console.log(res);
-      setResult(res?.contents)
-      setLoading(false)
-    })
-  }
+ 
 
 
   return (

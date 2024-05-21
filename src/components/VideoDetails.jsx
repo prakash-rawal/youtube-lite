@@ -15,12 +15,6 @@ const VideoDetails = () => {
     const { id } = useParams();
     const { setLoading } = useContext(Context);
 
-    useEffect(() => {
-        document.getElementById("root").classList.add("custom-h");
-        fetchVideoDetails();
-        fetchRelatedVideos();
-    }, [id, fetchVideoDetails, fetchRelatedVideos]);
-
     const fetchVideoDetails = () => {
         setLoading(true);
         fetchDataFromApi(`video/details/?id=${id}`).then((res) => {
@@ -38,6 +32,14 @@ const VideoDetails = () => {
             setLoading(false);
         });
     };
+
+    useEffect(() => {
+        document.getElementById("root").classList.add("custom-h");
+        fetchVideoDetails();
+        fetchRelatedVideos();
+    }, [id, fetchVideoDetails, fetchRelatedVideos]);
+
+   
 
     return (
         <div className="flex justify-center flex-row h-[calc(100%-56px)] bg-black">
